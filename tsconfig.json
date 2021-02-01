@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "es5",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "strict": true,
+    "lib": ["DOM", "ES5", "ES2015"],
+    "outDir": "./lib",
+    "declaration": true
+  },
+  "include": ["src/**/*"]
+}

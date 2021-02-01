@@ -1,0 +1,45 @@
+{
+  "name": "version-file-webpack-plugin",
+  "version": "0.1.0",
+  "description": "Generate version infomation file in webpack output folder",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "rm -rf ./lib/* && yarn build:cjs",
+    "build:cjs": "tsc",
+    "build:test": "rm -rf ./build/* && tsc --project tsconfig.test.json --outDir ./build",
+    "test": "yarn build:test && ava",
+    "lint": "eslint .",
+    "prettier": "prettier --write '**/*' --config ./.prettierrc",
+    "prepare": "yarn build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangcch/version-file-webpack-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "version"
+  ],
+  "author": "wangcch <wangcch.cc@gmail.com>",
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@ava/babel": "^1.0.1",
+    "@ava/typescript": "^1.1.1",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "ava": "^3.15.0",
+    "eslint": "^7.19.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "^2.2.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  }
+}
