@@ -28,7 +28,9 @@
   "files": [
     "lib"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "@types/webpack": "^5.28.0"
+  },
   "devDependencies": {
     "@ava/babel": "^1.0.1",
     "@ava/typescript": "^1.1.1",
