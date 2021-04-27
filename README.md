@@ -17,6 +17,34 @@ yarn build
 yarn test
 ```
 
+## options
+
+| options                | type           | default                            | description                                                                                                                |
+| ---------------------- | -------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| output                 | string         | \_\_version.json                   | file path                                                                                                                  |
+| data                   | object         | `{}`                               | output data                                                                                                                |
+| jsonStringify.replacer | array          | null                               | JSON.stringify [replacer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) |
+| jsonStringify.space    | string\|number | 2                                  | JSON.stringify [space](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)    |
+| writeFileOptions       | object         | `{ encoding: "utf-8", flag: "w" }` | fs.writeFile options                                                                                                       |
+
+## config
+
+```js
+// webpack.config.js
+
+const VersionPlugin = require('version-file-webpack-plugin');
+
+module.exports = {
+  // ...
+  plugins: [
+    new VersionPlugin({
+      output: '__info/version.txt',
+      data: process.env,
+    });
+  ],
+};
+```
+
 ## license
 
 [MIT](./LICENSE)
