@@ -2,6 +2,8 @@
 
 Generate version infomation file in webpack output folder
 
+[![test](https://github.com/wangcch/version-file-webpack-plugin/actions/workflows/main.yml/badge.svg)](https://github.com/wangcch/version-file-webpack-plugin/actions/workflows/main.yml)
+[![npm](https://img.shields.io/npm/v/version-file-webpack-plugin.svg)](https://www.npmjs.com/package/version-file-webpack-plugin)
 [![](https://img.shields.io/github/license/wangcch/version-file-webpack-plugin)](https://github.com/wangcch/version-file-webpack-plugin/blob/main/LICENSE)
 
 ## usage
