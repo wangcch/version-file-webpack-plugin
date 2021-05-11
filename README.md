@@ -8,7 +8,15 @@ Generate version infomation file in webpack output folder
 
 ## usage
 
+```shell
+npm i -D version-file-webpack-plugin
+
+# or
+
+yarn add -D version-file-webpack-plugin
 ```
+
+```shell
 # install dependencies
 yarn
 
