@@ -7,6 +7,9 @@ import VersionPlugin from "../src";
 test.beforeEach(() => {
   mock({
     "/dir/repo": {},
+    "/dir/nextjs": {
+      ".next": {},
+    },
   });
 });
 
@@ -65,4 +68,14 @@ test("apply()", (t) => {
 
   t.is(fs.existsSync("/dir/repo02/version/index.txt"), false);
   t.is(fs.existsSync("/version/index.txt"), true);
+});
+
+test("nextjs config", (t) => {
+  const plugin = new VersionPlugin({});
+
+  t.is(fs.existsSync("/dir/nextjs/public/__version.json"), false);
+
+  plugin.apply({ options: { output: { path: "/dir/nextjs/.next" } } } as any);
+
+  t.is(fs.existsSync("/dir/nextjs/public/__version.json"), true);
 });
