@@ -78,8 +78,8 @@ module.exports = {
 
 `.gitignore`
 
-```
-/public/[output]
+```diff
++/public/[output]
 ```
 
 ## license
