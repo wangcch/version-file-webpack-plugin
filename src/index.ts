@@ -3,7 +3,13 @@ import path from "path";
 import { Compiler } from "webpack";
 
 export type VersionPluginOptions = {
+  /**
+   * output path
+   * @default __version.json
+   */
   output: string;
+  /** Absolute path of output */
+  absolute?: boolean;
   data?: Record<string | number, any>;
   jsonStringify?: {
     replacer?: (number | string)[];
@@ -11,6 +17,8 @@ export type VersionPluginOptions = {
   };
   writeFileOptions?: fs.BaseEncodingOptions & { mode?: fs.Mode };
 };
+
+const NextJModePathRegExp = /.next(\/server)?$/;
 
 const defaultOptions: VersionPluginOptions = {
   output: "__version.json",
@@ -28,10 +36,17 @@ export default class VersionPlugin {
 
   apply(compiler: Compiler): void {
     if (compiler.options.output?.path) {
-      this.outputPath = compiler.options.output.path;
+      // support nextjs
+      if (NextJModePathRegExp.test(compiler.options.output.path)) {
+        this.outputPath = path.resolve(__dirname, "public");
+      } else {
+        this.outputPath = compiler.options.output.path;
+      }
     }
 
-    const filePath = path.join(this.outputPath, this.options.output);
+    const filePath = this.options.absolute
+      ? this.options.output
+      : path.join(this.outputPath, this.options.output);
 
     writeFile(
       filePath,
