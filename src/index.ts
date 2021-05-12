@@ -18,7 +18,8 @@ export type VersionPluginOptions = {
   writeFileOptions?: fs.BaseEncodingOptions & { mode?: fs.Mode };
 };
 
-const NextJModePathRegExp = /.next(\/server)?$/;
+const NextJSModePathRegExp = /.next(\/server)?$/;
+const NextJSPublicPath = "public";
 
 const defaultOptions: VersionPluginOptions = {
   output: "__version.json",
@@ -37,8 +38,11 @@ export default class VersionPlugin {
   apply(compiler: Compiler): void {
     if (compiler.options.output?.path) {
       // support nextjs
-      if (NextJModePathRegExp.test(compiler.options.output.path)) {
-        this.outputPath = path.resolve(__dirname, "public");
+      if (NextJSModePathRegExp.test(compiler.options.output.path)) {
+        this.outputPath = path.join(
+          compiler.options.output.path.replace(NextJSModePathRegExp, ""),
+          NextJSPublicPath
+        );
       } else {
         this.outputPath = compiler.options.output.path;
       }
