@@ -72,7 +72,7 @@ function writeFile(
   const directory = path.dirname(filePath);
 
   if (!fs.existsSync(directory)) {
-    fs.mkdirSync(directory);
+    fs.mkdirSync(directory, { recursive: true });
   }
 
   fs.writeFile(

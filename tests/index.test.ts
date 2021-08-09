@@ -70,6 +70,18 @@ test("apply()", (t) => {
   t.is(fs.existsSync("/version/index.txt"), true);
 });
 
+test("deep", (t) => {
+  const plugin01 = new VersionPlugin({
+    data: { 1: "demo01", b: "demo02" },
+  });
+
+  plugin01.apply({
+    options: { output: { path: "/dir/d1/d2/d3/repo01" } },
+  } as any);
+
+  t.is(fs.existsSync("/dir/d1/d2/d3/repo01/__version.json"), true);
+});
+
 test("nextjs config", (t) => {
   const plugin = new VersionPlugin({});
 
