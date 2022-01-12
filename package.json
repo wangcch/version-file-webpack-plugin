@@ -1,6 +1,6 @@
 {
   "name": "version-file-webpack-plugin",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Generate version infomation file in webpack output folder",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
